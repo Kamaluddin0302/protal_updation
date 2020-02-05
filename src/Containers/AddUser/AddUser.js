@@ -38,6 +38,7 @@ class AddUser extends React.Component {
 
   imageUpload = e => {
     let fileName = e.target.files[0].name;
+    console.log(fileName)
     let ref = firebaseApp
       .storage()
       .ref("/")

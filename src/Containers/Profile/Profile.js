@@ -134,7 +134,13 @@ class Profile extends React.Component {
       email,
       phone,
       profileImage,
-      goal } = this.state;
+      goal,
+      userId,
+      user,
+      dashboard
+    } = this.state;
+
+      console.log(profileImage)
     firebaseApp
       .firestore()
       .collection("users")
@@ -150,11 +156,44 @@ class Profile extends React.Component {
         email,
         phone,
         profileImage,
-        goal
+        goal,
+       
       })
-      .then((user) => {
+      .then(() => {
         console.log("updated", user);
-        // localStorage.setItem("user", JSON.stringify(user));
+
+        let data = {
+          firstName,
+          lastName,
+          email,
+          phone,
+          date,
+          profileImage,
+          userId,
+          gym,
+          trainer,
+          program,
+          gender,
+          goal,
+          isAdmin : false,
+        }
+        localStorage.setItem("user", JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          phone,
+          date,
+          profileImage,
+          userId,
+          gym,
+          trainer,
+          program,
+          gender,
+          goal,
+          isAdmin : false,
+          data :data,
+          dashboard,
+        }));
         this.setState({
           update: false
         })

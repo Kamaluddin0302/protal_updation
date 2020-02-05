@@ -13,6 +13,7 @@ class App extends React.Component {
   render() {
     let admin = localStorage.getItem("user");
     if (JSON.parse(admin)) {
+      console.log(JSON.parse(admin).data)
       if (JSON.parse(admin).data.isAdmin) {
         var showAdminRoute = true;
       } else {
